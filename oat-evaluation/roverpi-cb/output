@@ -1,0 +1,28 @@
+pi@navi    r./roverpi-cb_rewrite
+What port do you want to open?
+3000
+pinMode (int pin = 3, int mode = 1)
+pinMode (int pin = 4, int mode = 1)
+pinMode (int pin = 0, int mode = 1)
+pinMode (int pin = 2, int mode = 1)
+Starting Mainloop!
+main 51
+main 54
+tcpListener 26
+tcpListener 30
+tcpListener 35
+tcpListener 38
+tcpListener 40
+tcpListener 44
+tcpListener 47
+main 56
+round with attestation time usecs: 1559433
+ringbuffer->head is : 13
+ringbuffer->tail is : 0
+end_collecting not find in cache , verify from database
+Dumped 14 elements to hash_value.txt
+Dumped 4 branch trace elements to branch_trace.txt
+pi@navio:~$ ls -l hashvalue.txt 
+-rw-r--r-- 1 pi pi 112 Dec 19 08:10 hash_value.txt
+pi@navio:~$ ls -l branch_trace.txt 
+-rw-r--r-- 1 pi pi 4 Dec 19 08:10 branch_trace.txt

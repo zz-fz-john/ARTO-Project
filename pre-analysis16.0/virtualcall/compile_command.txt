@@ -1,0 +1,9 @@
+#!/bin/bash
+source ./env.sh
+#cmake -DLLVM_DIR=../../../llvm-16.0/llvm-project-16.0.0/build/lib/cmake/llvm  -DBOOST_INSTALL_DIR=~/boost/boost_1_74_0/stage/lib/cmake/Boost-1.74.0 -DSVF_DIR=../../type_match_svf3/SVF .. 
+mkdir build
+cd build
+cmake  -DLLVM_DIR=../../../llvm-16.0/llvm-project-16.0.0/build/lib/cmake/llvm  -DBOOST_INSTALL_DIR=~/boost/boost_1_74_0/stage/lib/cmake/Boost-1.74.0  ..
+make -j4
+
+

@@ -1,0 +1,25 @@
+#!/bin/bash
+echo "Setting working directory"
+cd ../pre-analysis16.0/util/static_analysis ||exit 1
+mkdir -p ../output
+echo "Merging svf indirect calls, llvm-cfi, and deep-type results" # Problematic, do not execute. svf analysis has already been integrated into the previous indirect call analysis.
+#python3 merge_static_analysis_result.py
+echo "Obtaining call subgraph and related functions"
+python3 find_func_in_path.py --avoid_handle_function ../../../ardurover/build/SITL_arm_linux_gnueabihf/avoid_handle_function.txt \
+    --mainjob_file_path ../../../ardurover/build/SITL_arm_linux_gnueabihf/critical_function.txt \
+    --recursive_func_file ../output/recursive_header_func.txt \
+    --indirect_file ../../virtualcall/output/indirectcall.txt \
+    --direct_file ../../virtualcall/output/direct_call_result.txt \
+    --ToInsertFuncFile ../output/ToInsertFunc.txt
+cp ../output/ToInsertFunc.txt ../../../ardurover/build/SITL_arm_linux_gnueabihf/ToInsertFunc.txt
+
+cp ../output/ToInsertFunc.txt ../output/ToInsertFunc_rover.txt
+
+cp ../output/recursive_header_func.txt ../../../ardurover/build/SITL_arm_linux_gnueabihf/recursive_function.txt
+
+cp ../output/only_called_once_func.txt ../../../ardurover/build/SITL_arm_linux_gnueabihf/only_called_once_func.txt
+
+cp ../output/only_called_once_func.txt ../output/only_called_once_func_rover.txt
+
+cp ../output/leaf_func.txt  ../../../ardurover/build/SITL_arm_linux_gnueabihf/leaf_func.txt
+cd ../../../ardurover

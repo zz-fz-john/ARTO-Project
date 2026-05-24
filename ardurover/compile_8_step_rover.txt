@@ -1,0 +1,10 @@
+#!/bin/bash
+sshpass -p "raspberry" scp ./Tools/autotest/default_params/rover.parm pi@192.168.1.101:/home/pi
+sshpass -p "raspberry" scp ./build/SITL_arm_linux_gnueabihf/bin/ardurover pi@192.168.1.101:/home/pi
+sshpass -p "raspberry" scp ./build/SITL_arm_linux_gnueabihf/ardurover_org pi@192.168.1.101:/home/pi
+cd ../measurement-engine/first-measure-in-secure-world/
+sshpass -p "raspberry" scp ./output/blake2s.o ./output/CFeventSingleThread.o  ./output/trampoline.o  ./output/dummycode.o ./output/heap_section.o pi@192.168.1.101:/home/pi/
+cd ../../pre-analysis16.0/util/output/
+sshpass -p "raspberry" scp ./ardurover_rewrite pi@192.168.1.101:/home/pi
+sshpass -p "raspberry" scp ./ardurover_output pi@192.168.1.101:/home/pi
+#sshpass -p "raspberry" scp ./ardurover_rewrite_ROL pi@192.168.1.101:/home/pi

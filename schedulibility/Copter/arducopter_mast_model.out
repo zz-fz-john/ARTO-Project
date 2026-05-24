@@ -1,0 +1,360 @@
+Real_Time_Situation (
+   Model_Name         => arducopter_multicopter,
+   Model_Date         => 2026-05-16,
+   Generation_Tool    => "MAST Schedulability Analysis, version 1.7.0.0",
+   Generation_Profile => "D:\MAST\mast-bin-win-1-7-0-0\mast_analysis.exe default -v -s C:\Users\Robert Wang\Desktop\Copter\arducopter_mast_model.txt C:\Users\Robert Wang\Desktop\Copter\arducopter_mast_model.out",
+   Generation_Date    => 2026-05-16T13:45:21,
+   Results            => 
+       ((Type   => Slack,
+         Value  => 22.27%)));
+
+Transaction (
+   Name     => tr_fast_loop,
+   Results  => 
+       ((Type   => Slack,
+         Value  => 37.89%),
+        (Type                          => Timing_Result,
+         Event_Name                    => ev_step9,
+         Num_Of_Suspensions            => 0,
+         Worst_Blocking_Time           => 0.000,
+         Worst_Global_Response_Times   => 
+            ((Referenced_Event => ev_fast,
+              Time_Value       => 1.211)),
+         Best_Global_Response_Times    => 
+            ((Referenced_Event => ev_fast,
+              Time_Value       => 0.000)),
+         Jitters                       => 
+            ((Referenced_Event => ev_fast,
+              Time_Value       => 1.211)))));
+
+Transaction (
+   Name     => tr_rc_loop,
+   Results  => 
+       ((Type   => Slack,
+         Value  => 1536.3%),
+        (Type                          => Timing_Result,
+         Event_Name                    => out_rc_loop,
+         Num_Of_Suspensions            => 0,
+         Worst_Blocking_Time           => 0.000,
+         Worst_Global_Response_Times   => 
+            ((Referenced_Event => ev_rc_loop,
+              Time_Value       => 1.241)),
+         Best_Global_Response_Times    => 
+            ((Referenced_Event => ev_rc_loop,
+              Time_Value       => 0.000)),
+         Jitters                       => 
+            ((Referenced_Event => ev_rc_loop,
+              Time_Value       => 1.241)))));
+
+Transaction (
+   Name     => tr_throttle_loop,
+   Results  => 
+       ((Type   => Slack,
+         Value  => 2095.3%),
+        (Type                          => Timing_Result,
+         Event_Name                    => out_throttle_loop,
+         Num_Of_Suspensions            => 0,
+         Worst_Blocking_Time           => 0.000,
+         Worst_Global_Response_Times   => 
+            ((Referenced_Event => ev_throttle_loop,
+              Time_Value       => 1.263)),
+         Best_Global_Response_Times    => 
+            ((Referenced_Event => ev_throttle_loop,
+              Time_Value       => 0.000)),
+         Jitters                       => 
+            ((Referenced_Event => ev_throttle_loop,
+              Time_Value       => 1.263)))));
+
+Transaction (
+   Name     => tr_gps_update,
+   Results  => 
+       ((Type   => Slack,
+         Value  => 109.38%),
+        (Type                          => Timing_Result,
+         Event_Name                    => out_gps_update,
+         Num_Of_Suspensions            => 0,
+         Worst_Blocking_Time           => 0.000,
+         Worst_Global_Response_Times   => 
+            ((Referenced_Event => ev_gps_update,
+              Time_Value       => 1.683)),
+         Best_Global_Response_Times    => 
+            ((Referenced_Event => ev_gps_update,
+              Time_Value       => 0.000)),
+         Jitters                       => 
+            ((Referenced_Event => ev_gps_update,
+              Time_Value       => 1.683)))));
+
+Transaction (
+   Name     => tr_update_batt_compass,
+   Results  => 
+       ((Type   => Slack,
+         Value  => 598.44%),
+        (Type                          => Timing_Result,
+         Event_Name                    => out_update_batt_compass,
+         Num_Of_Suspensions            => 0,
+         Worst_Blocking_Time           => 0.000,
+         Worst_Global_Response_Times   => 
+            ((Referenced_Event => ev_update_batt_compass,
+              Time_Value       => 1.760)),
+         Best_Global_Response_Times    => 
+            ((Referenced_Event => ev_update_batt_compass,
+              Time_Value       => 0.000)),
+         Jitters                       => 
+            ((Referenced_Event => ev_update_batt_compass,
+              Time_Value       => 1.760)))));
+
+Transaction (
+   Name     => tr_read_aux_all,
+   Results  => 
+       ((Type   => Slack,
+         Value  => 1843.8%),
+        (Type                          => Timing_Result,
+         Event_Name                    => out_read_aux_all,
+         Num_Of_Suspensions            => 0,
+         Worst_Blocking_Time           => 0.000,
+         Worst_Global_Response_Times   => 
+            ((Referenced_Event => ev_read_aux_all,
+              Time_Value       => 1.785)),
+         Best_Global_Response_Times    => 
+            ((Referenced_Event => ev_read_aux_all,
+              Time_Value       => 0.000)),
+         Jitters                       => 
+            ((Referenced_Event => ev_read_aux_all,
+              Time_Value       => 1.785)))));
+
+Transaction (
+   Name     => tr_arm_motors_check,
+   Results  => 
+       ((Type   => Slack,
+         Value  => 9219.9%),
+        (Type                          => Timing_Result,
+         Event_Name                    => out_arm_motors_check,
+         Num_Of_Suspensions            => 0,
+         Worst_Blocking_Time           => 0.000,
+         Worst_Global_Response_Times   => 
+            ((Referenced_Event => ev_arm_motors_check,
+              Time_Value       => 1.790)),
+         Best_Global_Response_Times    => 
+            ((Referenced_Event => ev_arm_motors_check,
+              Time_Value       => 0.000)),
+         Jitters                       => 
+            ((Referenced_Event => ev_arm_motors_check,
+              Time_Value       => 1.790)))));
+
+Transaction (
+   Name     => tr_update_altitude,
+   Results  => 
+       ((Type   => Slack,
+         Value  => 677.73%),
+        (Type                          => Timing_Result,
+         Event_Name                    => out_update_altitude,
+         Num_Of_Suspensions            => 0,
+         Worst_Blocking_Time           => 0.000,
+         Worst_Global_Response_Times   => 
+            ((Referenced_Event => ev_update_altitude,
+              Time_Value       => 1.858)),
+         Best_Global_Response_Times    => 
+            ((Referenced_Event => ev_update_altitude,
+              Time_Value       => 0.000)),
+         Jitters                       => 
+            ((Referenced_Event => ev_update_altitude,
+              Time_Value       => 1.858)))));
+
+Transaction (
+   Name     => tr_run_nav_updates,
+   Results  => 
+       ((Type   => Slack,
+         Value  => 46100.0%),
+        (Type                          => Timing_Result,
+         Event_Name                    => out_run_nav_updates,
+         Num_Of_Suspensions            => 0,
+         Worst_Blocking_Time           => 0.000,
+         Worst_Global_Response_Times   => 
+            ((Referenced_Event => ev_run_nav_updates,
+              Time_Value       => 1.859)),
+         Best_Global_Response_Times    => 
+            ((Referenced_Event => ev_run_nav_updates,
+              Time_Value       => 0.000)),
+         Jitters                       => 
+            ((Referenced_Event => ev_run_nav_updates,
+              Time_Value       => 1.859)))));
+
+Transaction (
+   Name     => tr_three_hz_loop,
+   Results  => 
+       ((Type   => Slack,
+         Value  => 1646.1%),
+        (Type                          => Timing_Result,
+         Event_Name                    => out_three_hz_loop,
+         Num_Of_Suspensions            => 0,
+         Worst_Blocking_Time           => 0.000,
+         Worst_Global_Response_Times   => 
+            ((Referenced_Event => ev_three_hz_loop,
+              Time_Value       => 1.887)),
+         Best_Global_Response_Times    => 
+            ((Referenced_Event => ev_three_hz_loop,
+              Time_Value       => 0.000)),
+         Jitters                       => 
+            ((Referenced_Event => ev_three_hz_loop,
+              Time_Value       => 1.887)))));
+
+Transaction (
+   Name     => tr_baro_accumulate,
+   Results  => 
+       ((Type   => Slack,
+         Value  => 46100.0%),
+        (Type                          => Timing_Result,
+         Event_Name                    => out_baro_accumulate,
+         Num_Of_Suspensions            => 0,
+         Worst_Blocking_Time           => 0.000,
+         Worst_Global_Response_Times   => 
+            ((Referenced_Event => ev_baro_accumulate,
+              Time_Value       => 1.888)),
+         Best_Global_Response_Times    => 
+            ((Referenced_Event => ev_baro_accumulate,
+              Time_Value       => 0.000)),
+         Jitters                       => 
+            ((Referenced_Event => ev_baro_accumulate,
+              Time_Value       => 1.888)))));
+
+Transaction (
+   Name     => tr_one_hz_loop,
+   Results  => 
+       ((Type   => Slack,
+         Value  => 687.89%),
+        (Type                          => Timing_Result,
+         Event_Name                    => out_one_hz_loop,
+         Num_Of_Suspensions            => 0,
+         Worst_Blocking_Time           => 0.000,
+         Worst_Global_Response_Times   => 
+            ((Referenced_Event => ev_one_hz_loop,
+              Time_Value       => 1.955)),
+         Best_Global_Response_Times    => 
+            ((Referenced_Event => ev_one_hz_loop,
+              Time_Value       => 0.000)),
+         Jitters                       => 
+            ((Referenced_Event => ev_one_hz_loop,
+              Time_Value       => 1.955)))));
+
+Transaction (
+   Name     => tr_ekf_check,
+   Results  => 
+       ((Type   => Slack,
+         Value  => 2426.2%),
+        (Type                          => Timing_Result,
+         Event_Name                    => out_ekf_check,
+         Num_Of_Suspensions            => 0,
+         Worst_Blocking_Time           => 0.000,
+         Worst_Global_Response_Times   => 
+            ((Referenced_Event => ev_ekf_check,
+              Time_Value       => 1.974)),
+         Best_Global_Response_Times    => 
+            ((Referenced_Event => ev_ekf_check,
+              Time_Value       => 0.000)),
+         Jitters                       => 
+            ((Referenced_Event => ev_ekf_check,
+              Time_Value       => 1.974)))));
+
+Transaction (
+   Name     => tr_gpsglitch_check,
+   Results  => 
+       ((Type   => Slack,
+         Value  => 23050.0%),
+        (Type                          => Timing_Result,
+         Event_Name                    => out_gpsglitch_check,
+         Num_Of_Suspensions            => 0,
+         Worst_Blocking_Time           => 0.000,
+         Worst_Global_Response_Times   => 
+            ((Referenced_Event => ev_gpsglitch_check,
+              Time_Value       => 1.976)),
+         Best_Global_Response_Times    => 
+            ((Referenced_Event => ev_gpsglitch_check,
+              Time_Value       => 0.000)),
+         Jitters                       => 
+            ((Referenced_Event => ev_gpsglitch_check,
+              Time_Value       => 1.976)))));
+
+Transaction (
+   Name     => tr_lost_vehicle_check,
+   Results  => 
+       ((Type   => Slack,
+         Value  => 15366.4%),
+        (Type                          => Timing_Result,
+         Event_Name                    => out_lost_vehicle_check,
+         Num_Of_Suspensions            => 0,
+         Worst_Blocking_Time           => 0.000,
+         Worst_Global_Response_Times   => 
+            ((Referenced_Event => ev_lost_vehicle_check,
+              Time_Value       => 1.979)),
+         Best_Global_Response_Times    => 
+            ((Referenced_Event => ev_lost_vehicle_check,
+              Time_Value       => 0.000)),
+         Jitters                       => 
+            ((Referenced_Event => ev_lost_vehicle_check,
+              Time_Value       => 1.979)))));
+
+Transaction (
+   Name     => tr_gcs_update_receive,
+   Results  => 
+       ((Type   => Slack,
+         Value  => 1097.3%),
+        (Type                          => Timing_Result,
+         Event_Name                    => out_gcs_update_receive,
+         Num_Of_Suspensions            => 0,
+         Worst_Blocking_Time           => 0.000,
+         Worst_Global_Response_Times   => 
+            ((Referenced_Event => ev_gcs_update_receive,
+              Time_Value       => 2.021)),
+         Best_Global_Response_Times    => 
+            ((Referenced_Event => ev_gcs_update_receive,
+              Time_Value       => 0.000)),
+         Jitters                       => 
+            ((Referenced_Event => ev_gcs_update_receive,
+              Time_Value       => 2.021)))));
+
+Transaction (
+   Name     => tr_gcs_update_send,
+   Results  => 
+       ((Type   => Slack,
+         Value  => 2881.3%),
+        (Type                          => Timing_Result,
+         Event_Name                    => out_gcs_update_send,
+         Num_Of_Suspensions            => 0,
+         Worst_Blocking_Time           => 0.000,
+         Worst_Global_Response_Times   => 
+            ((Referenced_Event => ev_gcs_update_send,
+              Time_Value       => 2.037)),
+         Best_Global_Response_Times    => 
+            ((Referenced_Event => ev_gcs_update_send,
+              Time_Value       => 0.000)),
+         Jitters                       => 
+            ((Referenced_Event => ev_gcs_update_send,
+              Time_Value       => 2.037)))));
+
+Transaction (
+   Name     => tr_ins_periodic,
+   Results  => 
+       ((Type   => Slack,
+         Value  => 23050.0%),
+        (Type                          => Timing_Result,
+         Event_Name                    => out_ins_periodic,
+         Num_Of_Suspensions            => 0,
+         Worst_Blocking_Time           => 0.000,
+         Worst_Global_Response_Times   => 
+            ((Referenced_Event => ev_ins_periodic,
+              Time_Value       => 2.039)),
+         Best_Global_Response_Times    => 
+            ((Referenced_Event => ev_ins_periodic,
+              Time_Value       => 0.000)),
+         Jitters                       => 
+            ((Referenced_Event => ev_ins_periodic,
+              Time_Value       => 2.039)))));
+
+Processing_Resource (
+   Name     => rpi3b_cpu,
+   Results  => 
+       ((Type   => Slack,
+         Value  => 22.94%),
+        (Type   => Utilization,
+         Total  => 54.02%)));
+

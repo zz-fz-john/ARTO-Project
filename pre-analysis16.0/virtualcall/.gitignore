@@ -1,0 +1,5 @@
+build/
+output/*
+src/WholeProgramDevirt.cppdisable
+src/main.cppdisable
+src/CMakeListsdisable.txt

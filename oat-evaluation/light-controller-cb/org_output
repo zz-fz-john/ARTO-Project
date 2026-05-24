@@ -1,0 +1,104 @@
+pi@navio:~$ ./light-controller-cb_test_combo 
+ listen_to_events 
+ device none
+ device none
+ device none
+ device none
+Turn on 6
+IGNORED
+Turn on 7
+IGNORED
+II 0 0 class:command;protocol:arctech;model:selflearning;house:11799578;unit:12;group:0;method:turnon;
+ listen_to_events 
+ device none
+ device none
+ device none
+ device none
+Turn on 6
+IGNORED
+Turn on 7
+IGNORED
+II 0 0 class:command;protocol:arctech;model:selflearning;house:11799578;unit:12;group:0;method:turnon;
+ listen_to_events 
+ device none
+ device none
+ dewice none
+ device none
+Turn on 6
+IGNORED
+Turn on 7
+IGNORED
+II 0 0 class:command;protocol:arctech;model:selflearning;house:11799578;unit:12;group:0;method:turnon;
+ listen_to_events 
+ device none
+ device none
+ device none
+ device none
+Turn on 6
+IGNORED
+Turn on$7
+IGNORED
+II 0 0 class:command;protocol:arctech;model:selflearning;house:11799578;unit:12;group:0;method:turnon;
+ listen_to_events 
+ device none
+ device none
+ device none
+ device none
+Turn on 6
+IGNORED
+Turn on 7
+IGNORED
+II 0 0 class:command;protocol:arctech;model:selflearning;house:11799578;unit:12;group:0;method:turnon;
+ listen_to_events 
+ device none
+ device none
+ device none
+ device none
+Turn on 6
+IGNORED
+Turn on 7
+IGNORED
+II 0 0 class:command;protocol:arctech;model:selflearning;house:11799578;unit:12;group:0;method:turnon;
+ listen_to_eve�ts 
+ device none
+ device none
+ device none
+ device none
+Turn on 6
+IGNORED
+Turn on 7
+IGNORED
+II 0 0 class:command;protocol:arctech;model:selflearning;house:11799578;unit:12;group:0;method:turnon;
+ listen_to_events 
+ device none
+ device none
+ device none
+ device none
+Turn on 6
+IGNORED
+Turn on 7
+IGNORED
+II 0 0 class:command;protocol:arctech;model:selflearning;house:11799578;unit:12;group:0;method:turnon;
+ listen_to_events 
+ device none
+ device none
+ device none
+ device none
+Turn on 6
+IGNORED
+Turn on 7
+IGNORED
+II 0 2 class:command;protocol:arctech;model:selflearning;house:11799578;unit:12;group:0;method:turnon;
+ listen_to_events 
+ device none
+ device none
+ device none
+ device none
+Turn on 6
+IGNORED
+Turn on 7
+IGNORED
+II 0 0 class:command;protocol:arctech;model:selflearning;house:11799578;unit:12;group:0;method:turnon;
+round with attestation time usecs: 4075
+pi@navio:~$ 
+

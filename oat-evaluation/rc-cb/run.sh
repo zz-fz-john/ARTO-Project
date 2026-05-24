@@ -1,0 +1,1 @@
+python3 interactive_control.py ./example.json --server 192.168.1.101 --port 12345

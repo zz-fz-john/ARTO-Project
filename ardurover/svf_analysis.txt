@@ -1,0 +1,8 @@
+#!/bin/bash
+echo "using svf to analysis indirect call"
+cp build/SITL_arm_linux_gnueabihf
+cd ../pre-analysis16.0/type_match_svf3/SVF ||exit 1
+source ./setup.sh
+wpa -ander -dump-callgraph  ../../../ardupilot/build/SITL_arm_linux_gnueabihf/arducopter_breakconstant.ll >> ../../svf_analysis_result/ander-arducopter16_devirt-svf-patched_3_type_match.txt
+mv ./callgraph_final.dot ../../svf_analysis_result/ander-arducopter16_devirt-svf-patched_3_type_match.dot
+echo "SVF analysis completed"

@@ -1,0 +1,14 @@
+#!/bin/bash
+CURRENT_DIR=$(pwd)
+ROOT_DIR="${CURRENT_DIR}/.."
+TOOLCHAIN_DIR="${ROOT_DIR}/toolchains/aarch32"
+LLVM_LLC="${ROOT_DIR}/llvm-16.0/llvm-project-16.0.0/build/bin/llc"
+LLVM_LIB="${ROOT_DIR}/llvm-16.0/llvm-project-16.0.0/build/lib"
+
+cd build/SITL_arm_linux_gnueabihf/ || { echo "Failed to enter ardupilot build directory"; exit 1; }
+
+~/ARTO/toolchains/aarch32/arm-linux-gnueabihf/bin/ld -T arm_link_script_syringe_intermidea.txt  -EL -z relro -X --hash-style=gnu --eh-frame-hdr -m armelf_linux_eabi -dynamic-linker /lib/ld-linux-armhf.so.3 -o arducopter $TOOLCHAIN_DIR/arm-linux-gnueabihf/libc/usr/lib/Scrt1.o $TOOLCHAIN_DIR/arm-linux-gnueabihf/libc/usr/lib/crti.o $TOOLCHAIN_DIR/lib/gcc/arm-linux-gnueabihf/8.2.1/crtbeginS.o -L/usr/lib/gcc-cross/arm-linux-gnueabihf/9 -L/usr/lib/gcc-cross/arm-linux-gnueabihf/9/../../../../arm-linux-gnueabihf/lib/../lib -L/usr/lib/gcc-cross/arm-linux-gnueabihf/9/../../../../lib -L/lib/arm-linux-gnueabihf -L/lib/../lib -L/usr/lib/arm-linux-gnueabihf -L/usr/lib/../lib -L/usr/lib/gcc-cross/arm-linux-gnueabihf/9/../../../../arm-linux-gnueabihf/lib -L/lib -L/usr/lib -plugin $LLVM_LIB/LLVMgold.so -plugin-opt=mcpu=arm1176jzf-s --gc-sections -Bstatic  after_insert_checkpoint.o  ../../../measurement-engine/first-measure-in-secure-world/output/trampoline.o ../../../measurement-engine/first-measure-in-secure-world/output/CFeventSingleThread.o ../../../measurement-engine/first-measure-in-secure-world/output/heap_section.o ../../../measurement-engine/first-measure-in-secure-world/output/blake2s.o  ../../../measurement-engine/first-measure-in-secure-world/output/dummycode.o -Bdynamic $TOOLCHAIN_DIR/arm-linux-gnueabihf/libc/lib/libm.so.6 $TOOLCHAIN_DIR/arm-linux-gnueabihf/libc/lib/libdl.so.2 $TOOLCHAIN_DIR/arm-linux-gnueabihf/lib/libstdc++.so.6 $TOOLCHAIN_DIR/arm-linux-gnueabihf/libc/lib/libm.so.6 $TOOLCHAIN_DIR/arm-linux-gnueabihf/lib/libgcc_s.so.1  $TOOLCHAIN_DIR/lib/gcc/arm-linux-gnueabihf/8.2.1/libgcc.a -lpthread -lc $TOOLCHAIN_DIR/arm-linux-gnueabihf/lib/libgcc_s.so.1 $TOOLCHAIN_DIR/lib/gcc/arm-linux-gnueabihf/8.2.1/libgcc.a /usr/lib/gcc-cross/arm-linux-gnueabihf/9/crtendS.o $TOOLCHAIN_DIR/arm-linux-gnueabihf/libc/usr/lib/crtn.o
+rm -f ./arducopter.S
+
+
+$TOOLCHAIN_DIR/bin/arm-linux-gnueabihf-objdump -d  ./arducopter > ./arducopter.S

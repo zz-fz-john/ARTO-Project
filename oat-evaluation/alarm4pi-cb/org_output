@@ -1,0 +1,19 @@
+pi@navio:~$ ./alarm4pi-cb_test_combo 
+Child process nc executed
+Child process nc executed
+While exporting input pin 17 (PIR) error 2: No such file or directory
+While configuring direcction of pin 17 error 2: No such file or directory
+Error opening Pushover config file /home/pi/pushover_conf.txt: errno=2
+GPIO server initiated
+GPIO PIR (17) value: 1
+GPIO PIR (17) value: 1
+GPIO PIR (17) value: 1
+GPIO server terminated with error code: 0
+Polling thread initiated
+round with attestation time usecs: 1398
+Error waiting for tie polling thread to finish
+While unexporting GPIO pins error 2: No such file or directory
+Listening on [0.0.0.0] (family 2, port 8008)
+Listening on [0.0.0.0] (family 2, port 8080)
+Waiting for child processes to finish
+Sensor polling (timer) set to 0s and 0us

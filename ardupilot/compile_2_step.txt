@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cd ../pre-analysis16.0/util/static_analysis ||exit 1
+mkdir -p ../output
+
+
+python3 find_func_in_path.py
+cp ../output/ToInsertFunc.txt ../../../ardupilot/build/SITL_arm_linux_gnueabihf/ToInsertFunc.txt
+cp ../output/ToInsertFunc.txt ../output/ToInsertFunc_copter.txt
+cp ../output/recursive_header_func.txt ../../../ardupilot/build/SITL_arm_linux_gnueabihf/recursive_function.txt
+cp ../output/only_called_once_func.txt ../../../ardupilot/build/SITL_arm_linux_gnueabihf/only_called_once_func.txt
+cp ../output/leaf_func.txt  ../../../ardupilot/build/SITL_arm_linux_gnueabihf/leaf_func.txt
+cd ../../../ardupilot

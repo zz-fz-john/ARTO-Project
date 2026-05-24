@@ -1,0 +1,26 @@
+#!/bin/bash
+CURRENT_DIR=$(pwd)
+ROOT_DIR="${CURRENT_DIR}/"
+echo "Setting working directory"
+cd ../pre-analysis16.0/virtualcall/build ||exit 1
+echo "insert metadata and get direct  call-site result"
+./indCallAnalysis --guid --input \
+    ${ROOT_DIR}/build/SITL_arm_linux_gnueabihf/ardurover_breakconstant.ll 
+echo "get target set  of virtual indirect call-site"
+mkdir -p ../output
+./indCallAnalysis   --input \
+    ${ROOT_DIR}/build/SITL_arm_linux_gnueabihf/ardurover_breakconstant.ll
+echo "Copying output files"
+cp ../output/indirectcall.txt \
+    ../../../ardurover/build/SITL_arm_linux_gnueabihf/
+cp ../output/indirectcall.txt ../output/indirectcall_rover.txt 
+
+cp ../output/direct_call_result.txt \
+../../../ardurover/build/SITL_arm_linux_gnueabihf/
+
+cp ../output/direct_call_result.txt ../output/direct_call_result_rover.txt 
+
+cp ../output/callsite_target_map.txt \
+../../../ardurover/build/SITL_arm_linux_gnueabihf/
+cd ../../../ardurover
+echo "Acquired indirect calls"

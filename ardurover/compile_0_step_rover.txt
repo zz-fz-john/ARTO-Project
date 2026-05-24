@@ -1,0 +1,82 @@
+#!/bin/bash
+echo  "Setting compiler and related parameters"
+CURRENT_DIR=$(pwd)
+ROOT_DIR="${CURRENT_DIR}/.."
+export CC="$HOME/llvm-arm-cross/llvm-project-16.0.0/build/bin/clang"
+export CXX="$HOME/llvm-arm-cross/llvm-project-16.0.0/build/bin/clang++"
+export CFLAGS="-O0 -g  -Xclang -no-opaque-pointers  --target=arm-linux-gnueabihf -gdwarf-4"
+export CXXFLAGS="-O0 -g -Xclang -no-opaque-pointers  --target=arm-linux-gnueabihf -gdwarf-4"
+export LDFLAGS="-fuse-ld=$HOME/llvm-arm-cross/llvm-project-16.0.0/build/bin/ld.lld"
+LLVM_OPT="${ROOT_DIR}/llvm-16.0/llvm-project-16.0.0/build/bin/opt"
+LLVM_DIS="${ROOT_DIR}/llvm-16.0/llvm-project-16.0.0/build/bin/llvm-dis"
+LLVM_CHECKPOINT_PASS="${ROOT_DIR}/llvm-16.0/llvm-project-16.0.0/build/lib/LLVMInsertCheckPointsOnLoop.so"
+
+LLVM_LIB="${ROOT_DIR}/llvm-16.0/llvm-project-16.0.0/build/lib"
+TOOLCHAIN_DIR="${ROOT_DIR}/toolchains/aarch32"
+echo  "Running waf configure"
+./waf configure --board=SITL_arm_linux_gnueabihf --disable-scripting
+if [ $? -ne 0 ]; then
+    echo "❌ waf configure failed! Please check error messages."
+    exit 1
+fi
+
+echo "Running waf rover"
+./waf rover
+if [ $? -ne 0 ]; then
+    echo "❌ waf rover failed! Please check error messages."
+    exit 1
+fi
+echo "Compilation completed"
+
+echo "Entering build directory"
+cd build/SITL_arm_linux_gnueabihf/ || exit 1
+
+echo "Executing llvm-ar to process static libraries"
+${ROOT_DIR}/llvm-16.0/llvm-project-16.0.0/build/bin/llvm-ar -s lib/libRover_libs.a
+if [ $? -ne 0 ]; then
+    echo "❌ llvm-ar failed to process static libraries!"
+    exit 1
+fi
+echo "llvm-ar executed"
+#${ROOT_DIR}/llvm-16.0/llvm-project-16.0.0/build/bin/clang++ -Wl,-plugin-opt=no-opaque-pointers  -Wl,--export-dynamic -fno-exceptions -Wl,--gc-sections -fuse-ld=lld -flto -Wl,--plugin-opt=emit-llvm -Wl,--lto-whole-program-visibility  Rover/AP_Arming.cpp.*.o Rover/AP_Rally.cpp.*.o Rover/AP_State.cpp.*.o Rover/Attitude.cpp.*.o Rover/Copter.cpp.*.o Rover/GCS_Copter.cpp.*.o Rover/GCS_Mavlink.cpp.*.o Rover/Log.cpp.*.o Rover/Parameters.cpp.*.o Rover/RC_Channel.cpp.*.o Rover/UserCode.cpp.*.o Rover/UserParameters.cpp.*.o Rover/afs_copter.cpp.*.o Rover/autoyaw.cpp.*.o Rover/avoidance.cpp.*.o Rover/avoidance_adsb.cpp.*.o Rover/baro_ground_effect.cpp.*.o Rover/commands.cpp.*.o Rover/compassmot.cpp.*.o Rover/crash_check.cpp.*.o Rover/ekf_check.cpp.*.o Rover/esc_calibration.cpp.*.o Rover/events.cpp.*.o Rover/failsafe.cpp.*.o Rover/fence.cpp.*.o Rover/heli.cpp.*.o Rover/inertia.cpp.*.o Rover/land_detector.cpp.*.o Rover/landing_gear.cpp.*.o Rover/mode.cpp.*.o Rover/mode_acro.cpp.*.o Rover/mode_acro_heli.cpp.*.o Rover/mode_althold.cpp.*.o Rover/mode_auto.cpp.*.o Rover/mode_autorotate.cpp.*.o Rover/mode_autotune.cpp.*.o Rover/mode_avoid_adsb.cpp.*.o Rover/mode_brake.cpp.*.o Rover/mode_circle.cpp.*.o Rover/mode_drift.cpp.*.o Rover/mode_flip.cpp.*.o Rover/mode_flowhold.cpp.*.o Rover/mode_follow.cpp.*.o Rover/mode_guided.cpp.*.o Rover/mode_guided_nogps.cpp.*.o Rover/mode_land.cpp.*.o Rover/mode_loiter.cpp.*.o Rover/mode_poshold.cpp.*.o Rover/mode_rtl.cpp.*.o Rover/mode_smart_rtl.cpp.*.o Rover/mode_sport.cpp.*.o Rover/mode_stabilize.cpp.*.o Rover/mode_stabilize_heli.cpp.*.o Rover/mode_systemid.cpp.*.o Rover/mode_throw.cpp.*.o Rover/mode_turtle.cpp.*.o Rover/mode_zigzag.cpp.*.o Rover/motor_test.cpp.*.o Rover/motors.cpp.*.o Rover/navigation.cpp.*.o Rover/precision_landing.cpp.*.o Rover/radio.cpp.*.o Rover/sensors.cpp.*.o Rover/standby.cpp.*.o Rover/surface_tracking.cpp.*.o Rover/system.cpp.*.o Rover/takeoff.cpp.*.o Rover/takeoff_check.cpp.*.o Rover/terrain.cpp.*.o Rover/toy_mode.cpp.*.o Rover/tuning.cpp.*.o -Llib -lArduCopter_libs -o ardurover.bc
+
+${ROOT_DIR}/llvm-16.0/llvm-project-16.0.0/build/bin/clang++ -Wl,-plugin-opt=no-opaque-pointers  -Wl,--export-dynamic -fno-exceptions -Wl,--gc-sections -fuse-ld=lld -flto -Wl,--plugin-opt=emit-llvm -Wl,--lto-whole-program-visibility  Rover/*.o  -Llib -lRover_libs -o ardurover.bc
+
+$LLVM_DIS -opaque-pointers=0 ardurover.bc   -o ardurover.ll
+echo "Linked into bc file"
+echo "---------------------------------"
+echo "Processing IR file"
+
+echo "Optimizing passes to avoid redundant indirect calls and remove function aliases"
+$LLVM_OPT -S  -opaque-pointers=0 -passes="globalopt" -o ardurover_modify.ll ardurover.ll
+
+echo "Using whole-program devirtualization pass to remove virtual function calls with only one target" 
+$LLVM_OPT -S -passes=wholeprogramdevirt -whole-program-visibility -wholeprogramdevirt-summary-action=export -opaque-pointers=0 ardurover_modify.ll -o after_devirt.ll
+ 
+echo "Merging multiple Rets in functions into one to facilitate subsequent matching with statements in svf" 
+$LLVM_OPT -S  -passes="mergereturn" -opaque-pointers=0 after_devirt.ll -o after_merge.ll
+
+
+echo "Expanding GEP nested structures in IR to facilitate subsequent matching with statements in svf and identify key operations"
+$LLVM_OPT -load $LLVM_CHECKPOINT_PASS --Break-Constant-GEPs -enable-new-pm=0 -opaque-pointers=0 after_merge.ll -o ardurover_breakconstant.bc
+
+$LLVM_DIS -opaque-pointers=0 ardurover_breakconstant.bc -o ardurover_breakconstant.ll
+
+echo "For comparison, generate an original flight controller, but insert checkpoints to record some time"
+$LLVM_OPT -load $LLVM_CHECKPOINT_PASS --get-instrument-critical-func -enable-new-pm=0 -opaque-pointers=0 ardurover_breakconstant.bc -o enable_start_collect.bc
+
+$LLVM_DIS -opaque-pointers=0 enable_start_collect.bc -o enable_start_collect.ll
+
+#Generate original rover
+echo "Generating original Rover"
+$HOME/llvm-arm-cross/llvm-project-16.0.0/build/bin/llc -O3 -filetype=obj enable_start_collect.bc -mtriple=arm-linux-gnueabihf -mcpu=cortex-a53  -o enable_start_collect.o || { echo "llc failed"; exit 1; }
+
+$HOME/ARTO/toolchains/aarch32/arm-linux-gnueabihf/bin/ld -T arm_link_script_syringe_intermidea.txt  -EL -z relro -X --hash-style=gnu --eh-frame-hdr -m armelf_linux_eabi -dynamic-linker /lib/ld-linux-armhf.so.3 -o ardurover_org $TOOLCHAIN_DIR/arm-linux-gnueabihf/libc/usr/lib/Scrt1.o $TOOLCHAIN_DIR/arm-linux-gnueabihf/libc/usr/lib/crti.o $TOOLCHAIN_DIR/lib/gcc/arm-linux-gnueabihf/8.2.1/crtbeginS.o -L/usr/lib/gcc-cross/arm-linux-gnueabihf/9 -L/usr/lib/gcc-cross/arm-linux-gnueabihf/9/../../../../arm-linux-gnueabihf/lib/../lib -L/usr/lib/gcc-cross/arm-linux-gnueabihf/9/../../../../lib -L/lib/arm-linux-gnueabihf -L/lib/../lib -L/usr/lib/arm-linux-gnueabihf -L/usr/lib/../lib -L/usr/lib/gcc-cross/arm-linux-gnueabihf/9/../../../../arm-linux-gnueabihf/lib -L/lib -L/usr/lib -plugin $LLVM_LIB/LLVMgold.so -plugin-opt=mcpu=arm1176jzf-s --gc-sections -Bstatic  enable_start_collect.o   ../../../measurement-engine/first-measure-in-secure-world/output/trampoline.o ../../../measurement-engine/first-measure-in-secure-world/output/CFeventSingleThread.o ../../../measurement-engine/first-measure-in-secure-world/output/data_flow.o ../../../measurement-engine/first-measure-in-secure-world/output/heap_section.o  ../../../measurement-engine/first-measure-in-secure-world/output/xxhash3.o   ../../../measurement-engine/first-measure-in-secure-world/output/dummycode.o -Bdynamic $TOOLCHAIN_DIR/arm-linux-gnueabihf/libc/lib/libm.so.6 $TOOLCHAIN_DIR/arm-linux-gnueabihf/libc/lib/libdl.so.2 $TOOLCHAIN_DIR/arm-linux-gnueabihf/lib/libstdc++.so.6 $TOOLCHAIN_DIR/arm-linux-gnueabihf/libc/lib/libm.so.6 $TOOLCHAIN_DIR/arm-linux-gnueabihf/lib/libgcc_s.so.1  $TOOLCHAIN_DIR/lib/gcc/arm-linux-gnueabihf/8.2.1/libgcc.a -lpthread -lc $TOOLCHAIN_DIR/arm-linux-gnueabihf/lib/libgcc_s.so.1 $TOOLCHAIN_DIR/lib/gcc/arm-linux-gnueabihf/8.2.1/libgcc.a /usr/lib/gcc-cross/arm-linux-gnueabihf/9/crtendS.o $TOOLCHAIN_DIR/arm-linux-gnueabihf/libc/usr/lib/crtn.o 
+
+echo "Generating avoid_handle_function.txt and to_process_function.txt"
+$LLVM_OPT -load $LLVM_CHECKPOINT_PASS  --generate-process-function -enable-new-pm=0 -opaque-pointers=0 ardurover_breakconstant.ll
+
+echo "Completed IR preprocessing"
+
+echo "✅ Build completed!"
+cd ../../

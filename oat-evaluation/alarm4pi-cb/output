@@ -1,0 +1,30 @@
+pi@navio:~$ ./alarm4pi-cb_rewrite 
+Child process nc executed
+Child process nc executed
+While exporting input pin 17 (PIR) error 2: No such file or directory
+While configuring direcction of pin 17 error 2: No such file or directory
+Error opening Pushover config file /home/pi/pushover_conf.txt: errno=2
+GPIO server initiated
+GPIO PIR (17) value: 1
+GPIO PIR (17) value: 1
+GPIO PIR (17) value: 1
+GPIO server terminated with error code: 0
+Polling thread initiated
+round with attestation time usecs: 1709
+ringbuffer->head is : 12
+ringbuffer->tail is : 0
+end_collecting not find in cache , verify from database
+Dumped 13 elements to hash_value.txt
+Dumped 148 branch trace elements to branch_trace.txt
+Error waiting for the polling thread to finish
+While unexporting GPIO pins error 2: No such file or directory
+Listening on [0.0.0.0] (family 2, port 8080)
+Listening on [0.0.0.0] (family 2, port 8008)
+Waiting for child processes to finish
+Sensor polling (timer) set to 0s and 0us
+^CSignal 2 received: Sending TERM signal to children.
+Segmentation fault
+pi@navio:~$ ls -l hash_value.txt 
+-rw-r--r-- 1 pi pi 104 Dec 19 07:58 hash_value.txt
+pi@navio:~$ ls -l branch_trace.txt 
+-rw-r--r-- 1 pi pi 148 Dec 19 07:58 branch_trace.txt

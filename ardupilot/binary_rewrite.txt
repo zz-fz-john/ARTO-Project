@@ -1,0 +1,9 @@
+#!/bin/bash
+CURRENT_DIR=$(pwd)
+ROOT_DIR="${CURRENT_DIR}/.."
+TOOLCHAIN_DIR="${ROOT_DIR}/toolchains/aarch32"
+rm -f  build/SITL_arm_linux_gnueabihf/arducopter_rewrite
+cp build/SITL_arm_linux_gnueabihf/arducopter build/SITL_arm_linux_gnueabihf/arducopter_rewrite
+python3 ${ROOT_DIR}/pre-analysis16.0/util/binary_rewrite/add_data_base.py  build/SITL_arm_linux_gnueabihf/arducopter_rewrite ${ROOT_DIR}/pre-analysis16.0/util/output/final_hash_database_single.txt .custom_ro_data
+rm -f build/SITL_arm_linux_gnueabihf/arducopter_after.S
+$TOOLCHAIN_DIR/bin/arm-linux-gnueabihf-objdump -s -j .custom_ro_data  build/SITL_arm_linux_gnueabihf/arducopter_rewrite > build/SITL_arm_linux_gnueabihf/arducopter_after.S

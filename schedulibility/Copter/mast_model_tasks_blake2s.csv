@@ -1,0 +1,33 @@
+task_type,task_name,rate_hz,period_us,ap_priority,wcet_us,in_model,notes
+FAST_TASK,ins_update,400,2500,0,13,1,AP_InertialSensor::update - get current gyro data
+FAST_TASK,run_rate_controller,400,2500,0,22,1,low level rate controllers - WCET missing
+FAST_TASK,motors_output,400,2500,0,72,1,send outputs to motors library - WCET missing
+FAST_TASK,read_AHRS,400,2500,0,854,1,EKF state estimator - WCET missing
+FAST_TASK,read_inertia,400,2500,0,24,1,inertial nav update - WCET missing
+FAST_TASK,check_ekf_reset,400,2500,0,6,1,check EKF reset target - WCET missing
+FAST_TASK,update_flight_mode,400,2500,0,242,1,run attitude controllers
+FAST_TASK,update_home_from_EKF,400,2500,0,4,1,update home from EKF if necessary
+FAST_TASK,update_land_and_crash_detectors,400,2500,0,17,1,check if landed or crashed
+SCHED_TASK,rc_loop,250,4000,3,33,1,read radio and mode switch
+SCHED_TASK,throttle_loop,50,20000,6,21,1,update throttle mix and auto armed
+SCHED_TASK,gps_update,50,20000,9,420,1,AP_GPS::update
+SCHED_TASK,update_batt_compass,10,100000,15,77,1,read battery and compass
+SCHED_TASK,read_aux_all,10,100000,18,3,1,RC_Channels::read_aux_all
+SCHED_TASK,arm_motors_check,10,100000,21,5,1,arming status check
+SCHED_TASK,auto_disarm_check,10,100000,27,NaN,0,auto disarm safety check - WCET missing
+SCHED_TASK,auto_trim,10,100000,30,NaN,0,auto trim adjustment - WCET missing
+SCHED_TASK,update_altitude,10,100000,42,65,1,read baro and log control tuning
+SCHED_TASK,run_nav_updates,50,20000,45,1,1,navigation updates
+SCHED_TASK,update_throttle_hover,100,10000,48,NaN,0,hover throttle update - WCET missing
+SCHED_TASK,three_hz_loop,3,333333,57,28,1,3Hz loop: failsafe and tuning checks
+SCHED_TASK,baro_accumulate,50,20000,63,1,1,AP_Baro::accumulate
+SCHED_TASK,one_hz_loop,1,1000000,81,67,1,1Hz loop: PID notches and status
+SCHED_TASK,ekf_check,10,100000,84,19,1,EKF health check
+SCHED_TASK,check_vibration,10,100000,87,NaN,0,vibration monitoring - WCET missing
+SCHED_TASK,gpsglitch_check,10,100000,90,2,1,GPS glitch detection
+SCHED_TASK,takeoff_check,50,20000,91,NaN,0,takeoff condition check - WCET missing
+SCHED_TASK,standby_update,100,10000,96,NaN,0,standby mode update - WCET missing
+SCHED_TASK,lost_vehicle_check,10,100000,99,5,1,lost vehicle detection
+SCHED_TASK,gcs_update_receive,400,2500,102,46,1,GCS::update_receive
+SCHED_TASK,gcs_update_send,400,2500,105,22,1,GCS::update_send
+SCHED_TASK,ins_periodic,400,2500,123,2,1,AP_InertialSensor::periodic - WCET missing

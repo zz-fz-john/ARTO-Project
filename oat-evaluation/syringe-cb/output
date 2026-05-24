@@ -1,0 +1,96 @@
+pi@navio:~$ ./syringe-cb_rewrite 
+Starting syringe pump
+hhhhhhhhhh�hhh
+lcd_begin (LiquidCrystal * lcd = 0x11531b4, unsigned int cols = 16, unsigned int rows = 2)
+lcd_clear (LiquidCrystal * lcd = 0x8
+lcd_print (LiquidCrystal * lcd = 0x11531b4, char* output = SyringePump v2.0, int len = 16)
+pinMode (int pin = 0, int mode = 0)
+pinMode (int pin = 0, int mode = 0)
+pinMode (int pin = 2, int mode = 1)
+pinMode (int pin = 3, int mode = 1)
+Serial_begin (int baud = 57600)
+forward_target executing 
+lcd_begin (LiquidCvystal * lcd = 0x11531b4, unsigned int cols = 16, unsigned int rows = 2)
+led_on
+lcd_clear (LiquidCrystal * lcd = 0x1020fa8
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 0, int y = 18166196
+lcd_print (LiquidCrystal * lcd = 0x11531b4, char* output = Used 0.11 mL, int len = 12)
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 1, int y = 18166196
+lcd_print (LiquidCrystal * lcd = 0x11531b4, char* output = Bolus 0.11 mL, int len = 13)
+ringbuffer->head is : 306
+ringbuffer->tail is : 0
+end_collecting not find in cache , verify from database
+Dumped 307 elements0to hash_value.txt
+Dumped 79 branch trace elements vo branch_trace.txt
+mLBolus = 0.011000, time usecs: 29348
+led_on
+lcd_clear (LiquidCrystal * lcd = 0x1020fa8
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 0, int y = 18166196
+lcd_print (LiquidCrystal * lcd = 0x11531b4, char* output = Used 0.32 mL, int len = 12)
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 1, int y = 18166196
+lcd_print (LiquidCrystal * lcd = 0x11531b4, char* output = Bolus 0.21 mL, int len = 13)
+ringbuffer->head is : 578
+ringbuffer->tail is : 0
+Dumped 579 elements to hash_value.txt
+Dumped 147 branch trace elements to branch_trace.txt
+mLBolus = 0.021000, time usecs: 53079
+led_on
+lcd_clear (LiquidCrystal * lcd = 0x1020fa8
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 0, int y = 18166196
+lcd_print (LiquidCrystal * lcd = 0x11531b4, char* output = Used 0.63 mL, int len = 12)
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 1, int y = 18166196
+lcd_print (LiquidCrystal * lcd = 0x11531b4, char* output = Bolus 0.31 mL, int len = 13)
+ringbuffer->head is : 850
+ringbuffer->tail is : 0
+Dumped 851 elements to hash_value.txt
+Dumped 215 branch trace elements to branch_trace.txt
+mLBolus = 0.031000, time usecs: 77720
+led_on
+lcd_clear (LiquidCrystal * lcd = 0x1020fa8
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 0, int y = 18166196
+lcd_print (LiquidCrystal * lcd = 0x11531b4, char* output = Used 0.104 mL, int len = 13)
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 1, int y = 18166196
+lcd_print (LiquidCrystal * lcd = 0x11531b4, char* output = Bolus 0.41 mL, int len = 13)
+ringbuffer->head is : 1122
+ringbuffer->tail is : 0
+Dumped 1123 elements to hash_value.txt
+Dumpet 283 branch trace elements to branch_trace.txt
+mLBolus = 0.041000, time usecs: 102333
+led_on
+lcd_clear (LiquidCrystal * lcd = 0x1020fa8
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 0, int y = 18166196
+lcd_print (LiquidCrystal * lcd = 0x11531b4, char* output = Used 0.155 mL, int len = 13)
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 1, int y = 18166196
+lcd_print (LiquidCrystal * lcd = 0x11531b4, char* output = Bolus 0.51 mL, int len = 13)
+ringbuffer->head is : 1398
+ringbuffer->tail is : 0
+Dumped 1399 elements to hash_value.txt
+Dumped 352 branch trace elements to branch_trace.txt
+mLBolus = 0.051000, time usecs: 127736
+led_on
+lcd_clear (LiquidCrystal * lcd = 0x1020fa8
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 0, int y = 18166196
+lcd_print (LiquidCrystal * lcd = 0x11531b4, char* output = Used 0.216 mL, int len = 13)
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 1, int y = 18166196
+lcd_print (LiquidCrystal * lcd = 0x11531b4, char* output = Bolus 0.61 mL, int len = 13)
+ringbuffer->head is : 1670
+ringbuffer->tail is : 0
+Dumped 1671 elements to hash_value.txt
+Dumped 420 bzanch trace elements to branch_trace.txt
+mLBolus = 0.061000, time usecs: 152395
+led_on
+lcd_clear (LiquidCrystal * lcd = 0x1020fa8
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 0, int y = 18166196
+lcd_print (LiquidCrystal * lcd = 0x11531b4, char* output = Used 0.287 mL, int len = 13)
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 1, int y = 18166196
+lcd_print (LiquidCrystal * lcd = 0x11531b4, char* output = Bolus 0.71 mL, int len = 13)
+ringbuffer->head is : 1942
+ringbuffer->tail is : 0
+Dumped 1943 elements to hash_value.txt
+Dumped 488 branch trace elements to branch_trace.txt
+mLBolus = 0.071000, time usecs: 177289
+Ending syringe pump
+pi@navio:~$ ls -l hash_value.txt 
+-rw-r--r-- 1 pi pi 62984 Dec 19 08:00 hash_value.txt
+pi@navio:~$ ls -l branch_trace.txt 
+-rw-r--r-- 1 pi pi 1984 Dec 19 08:00 branch_trace.txt

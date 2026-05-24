@@ -1,0 +1,24 @@
+#!/bin/bash
+CURRENT_DIR=$(pwd)
+ROOT_DIR="${CURRENT_DIR}/.."
+
+cd ../pre-analysis16.0/virtualcall/build ||exit 1
+echo "insert metadata and get direct  call-site result"
+./indCallAnalysis --guid --input \
+    $ROOT_DIR/ardupilot/build/SITL_arm_linux_gnueabihf/arducopter_breakconstant.ll 
+echo "get target set  of virtual indirect call-site"
+mkdir -p ../output
+./indCallAnalysis   --input \
+    $ROOT_DIR/ardupilot/build/SITL_arm_linux_gnueabihf/arducopter_breakconstant.ll
+cp ../output/indirectcall.txt \
+    ../../../ardupilot/build/SITL_arm_linux_gnueabihf/
+
+cp ../output/indirectcall.txt ../output/indirectcall_copter.txt
+
+cp ../output/direct_call_result.txt \
+../../../ardupilot/build/SITL_arm_linux_gnueabihf/
+
+cp ../output/callsite_target_map.txt \
+../../../ardupilot/build/SITL_arm_linux_gnueabihf/
+cd ../../../ardupilot
+

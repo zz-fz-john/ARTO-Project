@@ -1,0 +1,146 @@
+pi@navio:~$ ./light-controller-cb_rewrite 
+ listen_to_events 
+ device none
+ device none
+ device none
+ device none
+Turn on 6
+IGNORED
+Turn on 7
+IGNORED
+II 0 0 class:command;protocol:arctech;model:selflearning;house:11799578;unit:12;group:0;method:turnon;
+ringbuffer->head is : 0
+ringbuffer->tail is : 0
+Dumped 0 elements to hash_value.txt
+Dumped 92 branch trace elements to branch_trace.txt
+ listen_to_events 
+ device none
+ device none
+ device none
+ device none
+Turn on 6
+IGNORED
+Turn on 7
+IGNORED
+II 0 0 class:command;protocol:arctech;model:selflearning;house:11799578;unit:12;group:0;method:turnon;
+ringbuffer->head is : 0
+ringbuffer->tail is : 0
+Dumped 0 elements to hash_value.txt
+Dumped 92 branch trace elements to branch_trace.txt
+ listen_to_events 
+ eevice none
+ devkce none
+ device none
+ device none
+Turn on 6
+IGNORED
+Turn on 7
+IGNORED
+II 0 0 class:command;protocol:arctech;model:selflearning;house:11799578;unit:12;group:0;method:turnon;
+ringbuffer->head is : 0
+ringbuffer->tail is$: 0
+Dumped 0 elements to hash_value.txt
+Dumped 92 branch trace elements to branch_trace.txt
+ listen_to_events 
+ device none
+ device none
+ device none
+ device none
+Turn on 6
+IGNORED
+Turn on 7
+IGNORED
+II 0 0 class:command;protocol:arctech;model:selflearning;house:11799578;unit:12;group:0;method:turnon;
+ringbuffer->head is : 0
+ringbuffer->tail is : 0
+Dumped 0 elements to hash_value.txt
+Dumped 92 branch trace elements to branch_trace.txt
+ misten_to_events 
+ device none
+ device none
+ device none
+ device none
+Turn on 6
+IGNORED
+Turn on 7
+IGNORED
+II 0 0 class:command;protocol:arctech;model:selflearning;house:11799578;unit:12;group:0;method:turnon;
+ringbuffer->head is : 0
+ringbuffer->tail is : 0
+Dumped 0 elements to hash_value.txt
+Dumped 92 branch trace elements to branch_trace.txt
+ listen_to_events 
+ device none
+ device none
+ device none
+ device none
+Turn on 6
+IGNORED
+Turn on 7
+IGNORED
+II 0 0 class:command;protocol:arctech;model:selflearning;house:11799578;unit:12;group:0;method:turnon;
+ringbuffer->head is : 0�
+                        ringbuffer->tail is : 0
+Dumped 0 elements to hash_value.txt
+Dumped 92 branch trace elements to branch_trace.txt
+ listen_to_events 
+ device none
+ device none
+ device none
+ device none
+Turn on 6
+IGNORED
+Turn on 7
+IGNORED
+II 0 0 class:command;protocol:arctech;model:selflearning;house:11799578;unit:12;group:0;method:turnon;
+ringbugfer->head is : 0
+ringbuffer->tail is : 0
+Dumped 0 elements to hash_value.txt
+Dumped 92 branch trace elements to bzanch_trace.txt
+ listen_to_events 
+ device none
+ device none
+ device none
+ device none
+Turn on 6
+IGNORED
+Turn on 7
+IGNORED
+II 0 0 class:command;protocol:arctech;model:selflearning;house:11799578;unit:12;group:0;method:turnon;
+ringbuffer->head is : 0
+ringbuffer->tail is : 0
+Dumped 0 elements to hash_value.txt
+Dumped 92 branch trace elements to branch_trace.txt
+ listen_to_events 
+ device none
+ device none
+ device none
+ device none
+Turn on 6
+IGNORED
+Turn on 7
+IGNORED
+II 0 0 class:command;protocol:arctech;model:selflearning;house:11799578;unit:12;group:0;method:turnon;
+ringbuffer->head is : 0
+ringbuffer->tail is : 0
+Dumped 0 elements to hash_value.txt
+Dumped 92 branch trace elements to branch_trace.txt
+ listen_t_events 
+ device none
+ device none
+ device none
+ device none
+Turn on 6
+IGNORED
+Turn on 7
+IGNORED
+II 0 0 class:command;protocol:arctech;model:selflearning;house:11799578;unit:12;group:0;method:turnon;
+ringbuffer->head is : 0
+ringbuffer->tail is : 0
+Dumped 0 elements to hash_value.txt
+Dumped 92 branch trace elements to branch_trace.txt
+round with attestation time usecs: 7336
+pi@navio:~$ ls -l hash_value.txt 
+-rw-r--r-- 1 pi pi 0 Dec 19 08:06 hash_value.txt
+pi@navio:~$ ls -l branch_trace.txt 
+-rw-r--r-- 1 pi pi 920 Dec 19 08:06 branch_trace.txt

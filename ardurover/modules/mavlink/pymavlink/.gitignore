@@ -1,0 +1,17 @@
+*~
+tags
+.DS_Store
+build*
+.nfs*
+share/
+__pycache__
+*.swp
+MANIFEST
+dist/
+.pydevproject
+.project
+.ropeproject
+*.cproject
+.tags*
+*.pyc
+/bin/

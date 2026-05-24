@@ -1,0 +1,63 @@
+pi@navio:~$ ./syringe-cb_test_combo 
+Starting syringe pump
+hhhhhhhhhhhhhh
+lcd_begin (LiquidCrystal * lcd = 0x41310c, unsigned int cols = 16, unsigned int rows = 2)
+lcd_clear (LiquidCrystal * lcd = 0x3bda3700
+lcd_print (LiquidCrystal * lcd = 0x41310c, char* output = SyringeQump v2.0, int len = 16)
+pinMode (int pin = 0, int mode = 0)
+pinMode (int pin = 0, in� mode = 0)
+pinMode (int pin = 2, int mode = 1)
+pinMode (int pin = 3, int mode = 1)
+Serial_begin (int baud = 57600)
+forward_target executing 
+lcd_begin (LiquidCrystal * lcd = 0x41310c, unsigned int cols = 16, unsigned int rows = 2)
+led_on
+lcd_clear (LiquidCrystal * lcd = 0x3bda3700
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 0, int y = 1004156672
+lcd_print (LiquidCrystal * lcd = 0x41310c, char* output = Used 0.11 mL, int len = 12)
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 1,"int y = 12
+lcd_print (LiquidCrystal * lcd = 0x41310c, char* output = Bolus 0.11 mL, int len = 13)
+mLBolus = 0.011000, time usecs: 28160
+led_on
+lcd_clear (LiquidCrystal * lcd = 0x3bda3700
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 0, int y = 1004156672
+lcd_print (LiquidCrystal * lcd = 0x41310c, char* output = Used 0.32 mL, int len = 12)
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 1, int y = 12
+lcd_print (LiquidCrystal * lcd = 0x41310c, char* output = Bolus 0.21 mL, int len = 13)
+mLBolus = 0.021000, time usecs: 51626
+led_on
+lcd_clear (LiquidCrystal * lcd = 0x3bda3700
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 0, int y = 1004156672
+lcd_print (LiquidCrystal * lcd = 0x41310c, char* output = Used 0.63 mL, int len = 12)
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 1, int y = 12
+lcd_prin� (LiqukdCrystal * lcd = 0x41310c, char* output = Bolus 0.31 mL, int len = 13)
+mLBolus = 0.03100, time usecs: 76138
+led_on
+lcd_clear (LiquidCrystal * lcd = 0x3bda3700
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 0, int y = 1004156672
+lcd_print (LiquidCrystal * lcd = 0x41310c, char* output = Used 0.104 mL, int len = 13)
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 1, int y = 13
+lcd_print (Liq}idCrystal * lcd = 0x41310c, char* output = Bolus 0.41 mL, int len ? 13)
+mLBolus = 0.041000, time usecs: 100250
+led_on
+lcd_clear (LiquidCrystal * lcd = 0x3bda3700
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 0, int!y = 1004156672
+lcd_print (LiquidCrystal * lcd = 0x41310c, char* output = Used 0.155 mL, int len = 13)
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 1, int y = 13
+lcd_print (LiquidCrystal * lcd = 0x41310c, char* output = Bolus 0.51 mL, int len = 13)
+mLBolus = 0.051000, time usecs: 124888
+led_on
+lcd_clear (LiquidCrystal * lcd = 0x3bda3700
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 0, int y = 1004156672
+lcd_print (LiquidCrystal * lcd = 0x41310c, char* output = Used 0.216 mL, int len = 13)
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 1, int y = 13
+lcd_print (LiquidCrystal * lcd = 0x41310c, char* output = Bolus 0.61 mL, int len = 13)
+mLBolus = 0.061000, time usecs: 149417
+led_on
+lcd_clear (LiquidCrystal * lcd = 0x3bda3700
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 0, int y = 1004156672
+lcd_print (LiquidCrystal * lcd = 0x41310c, char* output = Used 0.287 mL, int len = 13)
+lcd_setCursor (LiquidCrystal * lcd = 0x0, int x = 1, int y = 13
+lcd_print (LiquidCrystal * lcd = 0x41310c, char* output = Bolus 0.71 mL, int len = 13)
+mLBolus = 0.071000, time usecs: 173519
+Ending syringe pump

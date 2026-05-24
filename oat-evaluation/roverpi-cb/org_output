@@ -1,0 +1,19 @@
+pi@navio:~$ ./roverpi-cb_test_combo 
+What port do you want to open?
+3000
+pinMode (int pin = 3, int mode = 1)
+pinMode (int pin = 4, int mode = 1)
+pinMode (int pin = 0, int mode = 1)
+pinMode (int pin = 2, int mode = 1)
+Starting Mainloop!
+main 51
+main 54
+tcpListener 26
+tcpListener 30
+tcpListener 35
+tcpListener 38
+tcpListener 40
+tcpListener 44
+tcpListener 47
+main 56
+round with attestation time usecs: 1584455
