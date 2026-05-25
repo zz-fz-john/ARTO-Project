@@ -46,7 +46,6 @@ ARTO/
 ├── build_PX4/                           # PX4 specific build scripts
 ├── embench_test/                        # Embench benchmark suite for performance testing
 ├── build_target/                        # Build scripts for custom target programs
-├── test/                                # Test programs and examples
 │
 ├── WCET                                 # use Extreme Value Theory (EVT) to compute wcet
 ├── schedulibility                       # schedulibility use MAST
