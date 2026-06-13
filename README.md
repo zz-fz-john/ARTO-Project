@@ -128,8 +128,15 @@ git clone <repository-url> ARTO
 cd ARTO
 export ARTO_ROOT=$(pwd)
 ```
-
+### Automic Compile The Dependencies and Compiler Toolchain
+We provide automated LLVM compilation scripts. If you choose to use the automated scripts for compilation, you can skip steps 2-5.
+```bash
+cd $ARTO_ROOT
+bash build_llvm.sh
+bash build_svf.sh
+```
 ### Step 2: Build Gold Linker (Required for LLVM)
+
 
 ```bash
 cd ~
@@ -169,11 +176,6 @@ ninja -j$(nproc)
 
 ```
 ### Step 4: Build Modified LLVM 16.0 Toolchain
-
-```bash
-cd $ARTO_ROOT
-bash build_llvm.sh
-```
 
 Or manually:
 

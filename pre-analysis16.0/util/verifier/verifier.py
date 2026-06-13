@@ -28,6 +28,11 @@ import threading
 import multiprocessing
 lib_path=".."
 sys.path.append(lib_path)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+util_dir = os.path.abspath(os.path.join(current_dir, ".."))
+
+if util_dir not in sys.path:
+    sys.path.insert(0, util_dir)
 from tools.fileOperation import *
 func_name_map={}##key=func_name ,value=func_addr
 func_addr_map={}#key=addr,value=func_name

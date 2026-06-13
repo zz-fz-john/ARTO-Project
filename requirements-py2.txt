@@ -1,0 +1,17 @@
+future
+lxml==5.0.0
+pymavlink==2.4.43
+MAVProxy==1.8.48
+empy
+pexpect
+networkx==1.11
+matplotlib==2.2.5
+pygraphviz==1.5
+pyserial==3.5
+bitarray==2.7.2
+pydotplus
+python-louvain
+capstone==4.0.2
+enum34
+pyelftools==0.26
+pyblake2
