@@ -606,7 +606,7 @@ bool AC_PosControl::is_active_xy() const
 ///     Desired velocity and accelerations are added to these corrections as they are calculated
 ///     Kinematically consistent target position and desired velocity and accelerations should be provided before calling this function
 
-void AC_PosControl::update_xy_controller()
+void __attribute__((annotate("critical function")))  AC_PosControl::update_xy_controller()
 {
     //update_xy_t1 = std::chrono::high_resolution_clock::now();//zrz add to measure overhead
     // check for ekf xy position reset
@@ -637,8 +637,8 @@ void AC_PosControl::update_xy_controller()
 
     // Velocity Controller
 
-    const Vector2f &curr_vel = _inav.get_velocity_xy_cms();
-    Vector2f accel_target  = _pid_vel_xy.update_all(_vel_target.xy(), curr_vel, _limit_vector.xy());
+    const Vector2f &curr_vel __attribute__((annotate("nova_sensitive_var")))= _inav.get_velocity_xy_cms();
+    Vector2f accel_target __attribute__((annotate("nova_sensitive_var"))) = _pid_vel_xy.update_all(_vel_target.xy(), curr_vel, _limit_vector.xy());
     
     // acceleration to correct for velocity error and scale PID output to compensate for optical flow measurement induced EKF noise
     accel_target *= ahrsControlScaleXY;
@@ -1221,7 +1221,7 @@ void AC_PosControl::lean_angles_to_accel_xy(float& accel_x_cmss, float& accel_y_
 }
 
 // calculate_yaw_and_rate_yaw - update the calculated the vehicle yaw and rate of yaw.
-bool __attribute__((annotate("critical function"))) AC_PosControl::calculate_yaw_and_rate_yaw()
+bool AC_PosControl::calculate_yaw_and_rate_yaw()
 {
     // Calculate the turn rate
     float turn_rate = 0.0f;

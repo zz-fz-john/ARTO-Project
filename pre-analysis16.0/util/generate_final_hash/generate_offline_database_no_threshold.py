@@ -424,8 +424,9 @@ def recurse_to_hash(opts,mm,md,current_address,recordpoint_start_addr,edge_list,
                 if path_hash in fake_hash_map[(recordpoint_start_addr, i.address)]:
                     return
                 fake_hash_map[(recordpoint_start_addr, i.address)].add(path_hash)
-                recurse_to_hash(opts,mm,md,i.address+4,recordpoint_start_addr,edge_list,fake_stack,loop_depth,recursive_depth,branch_list)
-                return
+                continue
+                #recurse_to_hash(opts,mm,md,i.address+4,recordpoint_start_addr,edge_list,fake_stack,loop_depth,recursive_depth,branch_list)
+                #return
             elif target_address in branch_func_addr:
                 compute_hash_path=xxhash.xxh3_64()
                 for edge in  fake_stack + shadow_stack:

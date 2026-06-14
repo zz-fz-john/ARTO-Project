@@ -223,17 +223,17 @@ void mission_control()
     {
         record_flag=1;
     }
-    if(record_cnt<=100)
+    if(record_cnt<=10000)
     {
         record_cnt=record_cnt+1;
     }
-    if(record_cnt==100)
+    if(record_cnt==10000)
     {
         record_flag=0;
     }
-    if(record_cnt>100)
+    if(record_cnt>10000)
     {
-        record_cnt=101;
+        record_cnt=10001;
     }
 }
 static inline __attribute__((always_inline)) bool isBranchTaken_fast(unsigned int cond, uint32_t cpsr)
@@ -1594,7 +1594,8 @@ void write_ringbuffer_to_file(const char* filename) {
     if (ret < 0) {
         perror("Write failed");
     } else {
-        printf("Dumped %zu elements to %s\n", current_head, filename);
+        //printf("Dumped %zu elements to %s\n", current_head, filename);
+        ;
     }
     // 5. 关闭文件
     close(file_fd);
@@ -1618,6 +1619,7 @@ void write_target_buffer_to_file(const char* filename) {
             perror("Write target_buffer failed");
         } else {
             printf("Dumped %d target_buffer elements to %s\n", head, filename);
+           
         }
     }
     
@@ -1642,7 +1644,8 @@ void write_branch_trace_to_file(const char* filename) {
     if (ret < 0) {
         perror("Write failed");
     } else {
-        printf("Dumped %d branch trace elements to %s\n", current_head, filename);
+        //printf("Dumped %d branch trace elements to %s\n", current_head, filename);
+        ;
     }
     
     // 4. 关闭文件

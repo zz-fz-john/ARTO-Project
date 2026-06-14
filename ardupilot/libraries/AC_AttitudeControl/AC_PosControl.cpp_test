@@ -606,7 +606,7 @@ bool AC_PosControl::is_active_xy() const
 ///     Desired velocity and accelerations are added to these corrections as they are calculated
 ///     Kinematically consistent target position and desired velocity and accelerations should be provided before calling this function
 
-void __attribute__((annotate("critical function")))  AC_PosControl::update_xy_controller()
+void  __attribute__((annotate("critical function"))) AC_PosControl::update_xy_controller()
 {
     //update_xy_t1 = std::chrono::high_resolution_clock::now();//zrz add to measure overhead
     // check for ekf xy position reset
@@ -617,7 +617,8 @@ void __attribute__((annotate("critical function")))  AC_PosControl::update_xy_co
         init_xy_controller();
         if (has_good_timing()) {
             // call internal error because initialisation has not been done
-            INTERNAL_ERROR(AP_InternalError::error_t::flow_of_control);
+            //INTERNAL_ERROR(AP_InternalError::error_t::flow_of_control);
+            printf("error\n");
         }
     }
     _last_update_xy_us = AP_HAL::micros64();
@@ -627,7 +628,7 @@ void __attribute__((annotate("critical function")))  AC_PosControl::update_xy_co
 
     // Position Controller
 
-    const Vector3f &curr_pos __attribute__((annotate("nova_sensitive_var")))= _inav.get_position_neu_cm();
+    const Vector3f &curr_pos = _inav.get_position_neu_cm();
     Vector2f vel_target = _p_pos_xy.update_all(_pos_target.x, _pos_target.y, curr_pos);
 
     // add velocity feed-forward scaled to compensate for optical flow measurement induced EKF noise
@@ -637,8 +638,8 @@ void __attribute__((annotate("critical function")))  AC_PosControl::update_xy_co
 
     // Velocity Controller
 
-    const Vector2f &curr_vel __attribute__((annotate("nova_sensitive_var")))= _inav.get_velocity_xy_cms();
-    Vector2f accel_target __attribute__((annotate("nova_sensitive_var"))) = _pid_vel_xy.update_all(_vel_target.xy(), curr_vel, _limit_vector.xy());
+    const Vector2f &curr_vel = _inav.get_velocity_xy_cms();
+    Vector2f accel_target  = _pid_vel_xy.update_all(_vel_target.xy(), curr_vel, _limit_vector.xy());
     
     // acceleration to correct for velocity error and scale PID output to compensate for optical flow measurement induced EKF noise
     accel_target *= ahrsControlScaleXY;
@@ -936,7 +937,7 @@ bool AC_PosControl::is_active_z() const
 ///     Position and velocity errors are converted to velocity and acceleration targets using PID objects
 ///     Desired velocity and accelerations are added to these corrections as they are calculated
 ///     Kinematically consistent target position and desired velocity and accelerations should be provided before calling this function
-void AC_PosControl::update_z_controller()
+void  AC_PosControl::update_z_controller()
 {
     // check for ekf z-axis position reset
     handle_ekf_z_reset();
@@ -946,7 +947,8 @@ void AC_PosControl::update_z_controller()
         init_z_controller();
         if (has_good_timing()) {
             // call internal error because initialisation has not been done
-            INTERNAL_ERROR(AP_InternalError::error_t::flow_of_control);
+            //INTERNAL_ERROR(AP_InternalError::error_t::flow_of_control);
+            printf("error\n");
         }
     }
     _last_update_z_us = AP_HAL::micros64();
@@ -1195,7 +1197,7 @@ float AC_PosControl::crosstrack_error() const
 ///
 
 // get_lean_angles_to_accel - convert roll, pitch lean angles to NE frame accelerations in cm/s/s
-void AC_PosControl::accel_to_lean_angles(float accel_x_cmss, float accel_y_cmss, float& roll_target, float& pitch_target) const
+void  AC_PosControl::accel_to_lean_angles(float accel_x_cmss, float accel_y_cmss, float& roll_target, float& pitch_target) const
 {
     // rotate accelerations into body forward-right frame
     const float accel_forward = accel_x_cmss * _ahrs.cos_yaw() + accel_y_cmss * _ahrs.sin_yaw();
@@ -1221,7 +1223,7 @@ void AC_PosControl::lean_angles_to_accel_xy(float& accel_x_cmss, float& accel_y_
 }
 
 // calculate_yaw_and_rate_yaw - update the calculated the vehicle yaw and rate of yaw.
-bool AC_PosControl::calculate_yaw_and_rate_yaw()
+bool  AC_PosControl::calculate_yaw_and_rate_yaw()
 {
     // Calculate the turn rate
     float turn_rate = 0.0f;
