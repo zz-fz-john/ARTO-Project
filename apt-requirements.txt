@@ -7,7 +7,6 @@ bison
 flex
 ninja-build
 ncurses-dev
-texlive-full
 binutils-dev
 libgmp-dev
 libmpfr-dev
@@ -15,17 +14,7 @@ curl
 libssl-dev
 libtinfo5
 python-tk
-python-pip
-python2
-python2-dev
-python-is-python2
-graphviz
-libgraphviz-dev
 pkg-config
 python3-pip
-python3-pygraphviz
-python3-networkx
-python3-matplotlib
-python3-serial
 gcc-arm-linux-gnueabihf
 g++-arm-linux-gnueabihf

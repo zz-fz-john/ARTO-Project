@@ -223,17 +223,17 @@ void mission_control()
     {
         record_flag=1;
     }
-    if(record_cnt<=5)
+    if(record_cnt<=100)
     {
         record_cnt=record_cnt+1;
     }
-    if(record_cnt==5)
+    if(record_cnt==100)
     {
         record_flag=0;
     }
-    if(record_cnt>5)
+    if(record_cnt>100)
     {
-        record_cnt=6;
+        record_cnt=101;
     }
 }
 static inline __attribute__((always_inline)) bool isBranchTaken_fast(unsigned int cond, uint32_t cpsr)

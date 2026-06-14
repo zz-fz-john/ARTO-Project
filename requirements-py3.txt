@@ -13,8 +13,8 @@ pygraphviz
 keystone-engine
 lief==0.10.1
 kconfiglib
-symforce
 pyros-genmsg
-networkx==1.11
+networkx==2.8.8
 cxxfilt
 empy==3.3.4
+xxhash

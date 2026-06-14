@@ -80,9 +80,7 @@ sudo apt-get install -y \
 sudo apt-get install python-pip
 # if previous command error run 
 curl -O https://bootstrap.pypa.io/pip/2.7/get-pip.py
-sudo python2 get-pip.py
-python -m pip install --upgrade "pip < 19.2"
-sudo python -m pip install --upgrade "pip < 21.0"
+python2 get-pip.py --user "pip==20.3.4"
 sudo apt install -y python2 python2-dev python-is-python2
 sudo apt install -y graphviz libgraphviz-dev pkg-config python2-dev
 # Python packages for analysis and simulation
@@ -107,7 +105,7 @@ sudo apt install -y \
 sudo apt install python3-pip
 pip3 install  future lxml pymavlink MAVProxy \
     pydotplus python-louvain bitarray \
-    capstone enum34 pyelftools pyblake2 pygraphviz keystone-engine lief==0.10.1 kconfiglib symforce pyros-genmsg networkx==1.11 cxxfilt
+    capstone enum34 pyelftools pyblake2 pygraphviz keystone-engine lief==0.10.1 kconfiglib symforce pyros-genmsg networkx==2.8.8 cxxfilt xxhash
     
 /usr/bin/python3 -m pip install --user empy==3.3.4
 # ARM cross-compilation toolchain

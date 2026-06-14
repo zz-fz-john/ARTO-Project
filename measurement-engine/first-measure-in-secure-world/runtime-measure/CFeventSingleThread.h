@@ -31,12 +31,12 @@ extern "C"{
 // #include "blake2.h"
 //#define SMALLTEST //enable for small test case
 //#define EMBENCH_TEST //用于在embench中进行测试
-//#define TEST //只记录前几次控制循环产生的证据，为了快速记录，验证verifier
+#define TEST //只记录前几次控制循环产生的证据，为了快速记录，验证verifier
 
 //#define DBG //用于在出现错误时打印错误。
 //#define MEASURETIME //用于收集时间相关数据
 //#define COLLECTTIME //用于收集关键变量数据的最大值和最小值
-#define ONLYVERIFY  //不作CFI检查,只记录
+//#define ONLYVERIFY  //不作CFI检查,只记录
 //#define ONLYCFI //只进行控制流检查，包括cfa和cfi
 //#define ONLYDFI //只进行数据流检查
 //#define BLAKE2S_ENABLED //使用blake2s进行哈希计算，否则使用xxhash3_64
