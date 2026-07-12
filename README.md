@@ -19,7 +19,7 @@ ARTO/
 │       ├── llvm/lib/Transforms/Hexbox/                 # Compartmentalization passes
 │       │   ├── HexboxAnalysis.cpp                      # Static analysis for compartment generation
 │       │   └── HexboxApplication.cpp                   # LLVM IR instrumentation pass
-|       ├──llvm/lib/Transfors/InsertCheckpoint
+|       ├──llvm/lib/Transforms/InsertCheckpoint
 |       |   ├──InsertCheckpoint.cpp                     # llvm fronted pass to insert checkpoint
 |       |   └──insert_dymmy_code.cpp                    # llvm fronted pass to insert dummy code
 │       └── llvm/lib/Target/ARM/                        # ARM backend instrumentation
